@@ -7,6 +7,11 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.web.multipart.MultipartFile;
 
+//import java.io.File;
+//import java.io.FileOutputStream;
+//import java.io.IOException;
+//import java.io.OutputStream;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,6 +20,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 @UtilityClass
 public class FileUtil {
@@ -33,6 +39,7 @@ public class FileUtil {
             } catch (IOException ex) {
                 throw new IllegalRequestDataException("Failed to upload file" + multipartFile.getOriginalFilename());
             }
+
         }
     }
 
@@ -53,9 +60,9 @@ public class FileUtil {
     public static void delete(String fileLink) {
         Path path = Paths.get(fileLink);
         try {
-            Files.delete(path);
+            Files.deleteIfExists(path);
         } catch (IOException ex) {
-            throw new IllegalRequestDataException("File" + fileLink + " deletion failed.");
+            throw new RuntimeException("File" + fileLink + " deletion failed.");
         }
     }
 

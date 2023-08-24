@@ -28,4 +28,5 @@
 
 Список выполненных задач:
 2. Удалить социальные сети: vk, yandex. +
+6.  Сделать рефакторинг метода com.javarush.jira.bugtracking.attachment.FileUtil#upload частично
 ...
