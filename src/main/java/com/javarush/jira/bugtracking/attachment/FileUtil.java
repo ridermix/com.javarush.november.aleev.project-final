@@ -20,7 +20,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+
 
 @UtilityClass
 public class FileUtil {
@@ -39,8 +39,15 @@ public class FileUtil {
             } catch (IOException ex) {
                 throw new IllegalRequestDataException("Failed to upload file" + multipartFile.getOriginalFilename());
             }
-
         }
+
+//        Path path = Path.of(directoryPath + fileName);
+//        try (OutputStream output = Files.newOutputStream(path)){
+//            output.write(multipartFile.getBytes());
+//        } catch (IOException e) {
+//            throw new RuntimeException("Failed to upload file" + multipartFile.getOriginalFilename());
+//        }
+
     }
 
     public static Resource download(String fileLink) {
@@ -61,7 +68,7 @@ public class FileUtil {
         Path path = Paths.get(fileLink);
         try {
             Files.deleteIfExists(path);
-        } catch (IOException ex) {
+        } catch (RuntimeException | IOException ex) {
             throw new RuntimeException("File" + fileLink + " deletion failed.");
         }
     }
