@@ -19,14 +19,24 @@
                             <a class="btn btn-yellow" href="/doc" target="_blank" type="button">Swagger API</a>
                         </li>
                     </ul>
+                    <div>
+                        <a href="?lang=en" type="button" class="btn btn-sm btn-outline-light me-2" th:text="EN"></a>
+                        <a href="?lang=ru" type="button" class="btn btn-sm btn-outline-light me-2" th:text="RU"></a>
+                    </div>
                     <div th:if="${authUser} == null">
-                        <a class="btn btn-orange" href="/view/login" type="button">Login/Register</a>
+<!--                        <a class="btn btn-orange" href="/view/login" type="button">Login/Register</a>-->
+                        <a class="btn btn-orange" href="/view/login" type="button" th:text="#{index.header.login}">Login/Register</a>
                     </div>
                     <th:block th:if="${authUser} != null">
-                        <a class="btn btn-orange" href="/ui/profile" type="button"><i
+<!--                        <a class="btn btn-orange" href="/ui/profile" type="button"><i-->
+<!--                                class="fa-solid fa-address-card"></i> Profile</a>-->
+                        <a class="btn btn-orange" href="/ui/profile" type="button" th:text="#{index.header.profile}"><i
                                 class="fa-solid fa-address-card"></i> Profile</a>
                         <form action="/ui/logout" class="mx-2" method="post">
-                            <button class="btn btn-yellow btn-orange" type="submit"><i class="fa-solid fa-sign-out"></i>
+<!--                            <button class="btn btn-yellow btn-orange" type="submit"><i class="fa-solid fa-sign-out"></i>-->
+<!--                                Logout-->
+<!--                            </button>-->
+                            <button class="btn btn-yellow btn-orange" type="submit" th:text="#{index.header.logout}"><i class="fa-solid fa-sign-out"></i>
                                 Logout
                             </button>
                         </form>
