@@ -145,4 +145,11 @@ public class TaskUIController {
                 .filter(activity -> activity.getComment() != null)
                 .toList();
     }
+
+    @PostMapping("/{id}/tags")
+    public String addTaskTag(@PathVariable("id") Long taskId, @RequestBody String[] tags){
+        Set<String> setTags = Set.of(tags);
+        service.addTaskTag(taskId, setTags);
+        return "redirect:/ui/tasks/" + taskId;
+    }
 }
