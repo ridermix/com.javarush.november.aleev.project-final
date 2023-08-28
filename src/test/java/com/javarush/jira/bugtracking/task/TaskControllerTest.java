@@ -38,6 +38,7 @@ class TaskControllerTest extends AbstractControllerTest {
     private static final String STATUS_CODE = "statusCode";
     private static final String USER_TYPE = "userType";
     private static final String ENABLED = "enabled";
+    private static final String TAGS = "/tags";
 
     @Autowired
     private TaskRepository taskRepository;

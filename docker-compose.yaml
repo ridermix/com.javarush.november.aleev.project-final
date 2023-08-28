@@ -25,6 +25,16 @@ services:
       - POSTGRES_PASSWORD=JiraRush
       - POSTGRES_DB=jira
 
+  db-test:
+    container_name: db-test
+    image: postgres:latest
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=jira
+      - POSTGRES_PASSWORD=JiraRush
+      - POSTGRES_DB=jira
+
   nginx:
     container_name: nginx
     image: nginx:latest
